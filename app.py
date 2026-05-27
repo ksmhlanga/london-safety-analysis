@@ -96,7 +96,7 @@ st.sidebar.markdown("---")
 
 page = st.sidebar.radio(
     "Navigate",
-    ["🏠 Overview", "🗺️ Borough Map", "⚖️ Compare Boroughs", "👨‍👩‍👧 Family Finder"],
+    ["🏠 Overview", "🗺️ Borough Map", "⚖️ Compare Boroughs", "👨‍👩‍👧 Family Finder", "📊 Power BI Dashboard"],
 )
 
 st.sidebar.markdown("---")
@@ -467,3 +467,74 @@ elif page == "👨‍👩‍👧 Family Finder":
         "💡 **Tip:** These scores are based on 2024–2025 crime data, approximate house prices, "
         "and TfL zone estimates. Always visit a borough in person before making your decision!"
     )
+
+# ══════════════════════════════════════════════════════════════════════════════
+# PAGE 5 — POWER BI DASHBOARD
+# ══════════════════════════════════════════════════════════════════════════════
+elif page == "📊 Power BI Dashboard":
+
+    st.title("📊 Power BI Dashboard")
+    st.markdown("Full interactive Power BI report — crime trends, borough breakdowns, and safety analysis.")
+    st.markdown("---")
+
+    # ── Paste your Power BI embed URL here after publishing ──────────────────
+    POWERBI_EMBED_URL = ""   # e.g. "https://app.powerbi.com/view?r=eyJ..."
+
+    if not POWERBI_EMBED_URL:
+        st.info(
+            "**Power BI dashboard coming soon.**\n\n"
+            "To connect your Power BI report:\n"
+            "1. Open Power BI Desktop and build your report using the project CSV files\n"
+            "2. Publish it to Power BI Service (app.powerbi.com)\n"
+            "3. Go to File → Publish to web → copy the embed URL\n"
+            "4. Paste the URL into `POWERBI_EMBED_URL` in `app.py`\n\n"
+            "The dashboard will appear here automatically once the URL is set."
+        )
+
+        # Show a preview of what the Power BI report should contain
+        st.markdown("### Suggested Power BI Report Pages")
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("""
+            **Page 1 — Borough Overview**
+            - Safety score bar chart (all 33 boroughs)
+            - Tier breakdown donut chart
+            - KPI cards: safest, most affordable, best family borough
+
+            **Page 2 — Crime Analysis**
+            - Crime type breakdown by borough
+            - Monthly trend line (2024–2025)
+            - Heatmap: borough vs crime type
+            """)
+        with col2:
+            st.markdown("""
+            **Page 3 — Family Suitability**
+            - Family score vs house price scatter plot
+            - Outer vs Inner London comparison
+            - Top 10 family boroughs table
+
+            **Page 4 — Map View**
+            - Filled map of London boroughs
+            - Colour-coded by safety score
+            - Tooltip: score, tier, price, transport
+            """)
+
+        st.markdown("---")
+        st.markdown("**Data files to use in Power BI:**")
+        st.code(
+            "data/processed/borough_safety_summary.csv\n"
+            "data/raw/crime_data_summary.csv\n"
+            "data/raw/borough_population.csv",
+            language="text"
+        )
+
+    else:
+        # Render the embedded Power BI report
+        st.components.v1.iframe(
+            POWERBI_EMBED_URL,
+            height=700,
+            scrolling=True,
+        )
+        st.caption(
+            "Powered by Microsoft Power BI · Data: data.police.uk (Jan 2024 – Dec 2025)"
+        )
