@@ -1,0 +1,19 @@
+# Tell Git to treat all image files as binary
+# This prevents line-ending conversion that corrupts image data
+
+*.jpg    binary
+*.jpeg   binary
+*.png    binary
+*.gif    binary
+*.svg    binary
+*.ico    binary
+*.webp   binary
+
+# Notebooks — treat as text with LF line endings
+*.ipynb  text eol=lf
+
+# Python — LF line endings
+*.py     text eol=lf
+
+# CSV — LF line endings
+*.csv    text eol=lf
