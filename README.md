@@ -9,6 +9,15 @@
 ![Records](https://img.shields.io/badge/Records-753%2C904-orange)
 ![Boroughs](https://img.shields.io/badge/Boroughs-33-blueviolet)
 ![License](https://img.shields.io/badge/License-MIT-green)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ksmhlanga-london-safety-analysis.streamlit.app)
+
+---
+
+## 🌐 Live App
+
+**[👉 Open the Interactive Dashboard](https://ksmhlanga-london-safety-analysis.streamlit.app)**
+
+Explore borough safety rankings, crime trends, the family finder tool, and the embedded Power BI dashboard — all live online.
 
 ---
 
