@@ -9,13 +9,13 @@
 ![Records](https://img.shields.io/badge/Records-753%2C904-orange)
 ![Boroughs](https://img.shields.io/badge/Boroughs-33-blueviolet)
 ![License](https://img.shields.io/badge/License-MIT-green)
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ksmhlanga-london-safety-analysis.streamlit.app)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://london-safety-analysis.streamlit.app)
 
 ---
 
 ## 🌐 Live App
 
-**[👉 Open the Interactive Dashboard](https://ksmhlanga-london-safety-analysis.streamlit.app)**
+**[👉 Open the Interactive Dashboard](https://london-safety-analysis.streamlit.app)**
 
 Explore borough safety rankings, crime trends, the family finder tool, and the embedded Power BI dashboard — all live online.
 
@@ -114,7 +114,7 @@ A secondary composite score designed specifically for families:
 
 ## 🚀 Streamlit Web App
 
-**Live URL:** [https://ksmhlanga-london-safety-analysis.streamlit.app](https://ksmhlanga-london-safety-analysis.streamlit.app)
+**Live URL:** [https://london-safety-analysis.streamlit.app](https://london-safety-analysis.streamlit.app)
 
 The project includes a fully interactive web app built with Streamlit, bringing all the analysis to life in a browser without needing to run any code.
 
