@@ -23,7 +23,7 @@ Explore borough safety rankings, crime trends, the family finder tool, and the e
 
 ## Personal Story
 
-In 2025, I faced a real decision: relocating my family from Northern Ireland to London for better career opportunities. As a father, safety and school quality mattered most. As a PSV Mechanic transitioning into Data Analytics, I chose to treat it as a data project rather than rely on guesswork or estate agent recommendations.
+In 2025, I faced a real decision: relocating my family from Northern Ireland to London for better career opportunities. As a father, safety and school quality mattered most. As a Senior Vehicle Engineer who is a Data Science enthusiast, I chose to treat it as a data project rather than rely on guesswork or estate agent recommendations.
 
 London has 33 boroughs. Each varies widely in crime levels, school quality, housing cost, and liveability. This project documents how I used publicly available data to identify the safest, most family-friendly boroughs — and built a complete end-to-end analytics pipeline along the way.
 
