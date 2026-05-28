@@ -112,6 +112,31 @@ A secondary composite score designed specifically for families:
 
 ---
 
+## 🚀 Streamlit Web App
+
+**Live URL:** [https://ksmhlanga-london-safety-analysis.streamlit.app](https://ksmhlanga-london-safety-analysis.streamlit.app)
+
+The project includes a fully interactive web app built with Streamlit, bringing all the analysis to life in a browser without needing to run any code.
+
+### App Pages
+
+| Page | Description |
+|---|---|
+| 🏠 Overview | KPI cards (total crimes, avg safety score, avg house price, crime rate) + full borough safety rankings bar chart |
+| 🗺️ Borough Map | Interactive scatter map of London coloured by safety score, family score, or house price |
+| ⚖️ Compare Boroughs | Select up to 3 boroughs and compare side by side — radar chart, crime breakdown, monthly trend |
+| 👨‍👩‍👧 Family Finder | Sliders for budget, safety priority and transport preference — returns a ranked list of best boroughs for your family |
+| 📊 Power BI Dashboard | Embedded live Power BI report with crime trends, family suitability, and borough breakdowns |
+
+### Running Locally
+
+```bash
+pip install streamlit pandas plotly numpy
+streamlit run app.py
+```
+
+---
+
 ## Repository Structure
 
 ```
