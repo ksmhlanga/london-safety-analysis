@@ -478,7 +478,7 @@ elif page == "📊 Power BI Dashboard":
     st.markdown("---")
 
     # ── Paste your Power BI embed URL here after publishing ──────────────────
-    POWERBI_EMBED_URL = ""   # e.g. "https://app.powerbi.com/view?r=eyJ..."
+    POWERBI_EMBED_URL = "https://app.powerbi.com/view?r=eyJrIjoiYjE4NmE3ODYtNDQ3OC00ZGViLTkxZmUtYzE1Y2ZlZjMwNWJjIiwidCI6ImZmMGYzZTNhLTNlNTMtNDU0Zi1iMmI1LTZjNjg3NTNiOGVlNCJ9"
 
     if not POWERBI_EMBED_URL:
         st.info(
