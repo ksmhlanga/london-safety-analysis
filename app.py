@@ -162,7 +162,7 @@ if page == "🏠 Overview":
     table.columns = ["Rank","Borough","Safety Score","Tier","Family Score",
                      "Avg Price (£k)","Location","TfL Zone","Transport Links"]
     st.dataframe(
-        table.style.background_gradient(subset=["Safety Score"], cmap="RdYlGn"),
+        table,
         use_container_width=True,
         hide_index=True,
     )
