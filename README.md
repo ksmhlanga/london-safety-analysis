@@ -194,7 +194,7 @@ london-safety-analysis/
 
 - End-to-end data analytics pipeline
 - Public API integration (data.police.uk)
-- Data cleaning and preprocessing at scale (611k records)
+- Data cleaning and preprocessing at scale (753k records)
 - Feature engineering and composite scoring systems
 - Statistical hypothesis testing (ANOVA)
 - Unsupervised machine learning (K-Means clustering, PCA)
@@ -208,7 +208,7 @@ london-safety-analysis/
 
 - [x] Define research question and project scope
 - [x] Set up repository structure
-- [x] Collect crime data via data.police.uk API (611,509 records)
+- [x] Collect crime data via data.police.uk API (753,904 records)
 - [x] Collect borough population data (ONS 2021 census)
 - [x] Exploratory data analysis (EDA)
 - [x] Data cleaning and standardisation
@@ -255,7 +255,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 **Kudzanayi Shepherd Mhlanga**
 
-PSV Mechanic transitioning into Data Analytics | Newcastle, Northern Ireland
+Senior Vehicle Engineer & Data Analytics | Sutton, London
 
 - Email: ksmhlanga@gmail.com
 - LinkedIn: [linkedin.com/in/ksmhlanga](https://www.linkedin.com/in/ksmhlanga)
