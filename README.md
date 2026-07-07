@@ -255,7 +255,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 **Kudzanayi Shepherd Mhlanga**
 
-Senior Vehicle Engineer & Data Analytics | Sutton, London
+Senior Vehicle Engineer based in Sutton, London, England | Data Science enthusiast
 
 - Email: ksmhlanga@gmail.com
 - LinkedIn: [linkedin.com/in/ksmhlanga](https://www.linkedin.com/in/ksmhlanga)
