@@ -11,6 +11,28 @@
 ![License](https://img.shields.io/badge/License-MIT-green)
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://london-safety-analysis.streamlit.app)
 
+
+> ## ⚠️ Methodology revision in progress — August 2026
+>
+> Crime data in this repository was collected using the data.police.uk
+> `crimes-street/all-crime` endpoint with a single lat/lng per borough. That endpoint returns
+> crimes within a **1-mile radius of a point**, not within borough boundaries. Each borough is
+> therefore sampled at between 5% and 100% of its actual area (Bromley 5.4%, Kensington and
+> Chelsea 67.2%) while crime rates are divided by its **full** resident population.
+>
+> **What still holds:** the inner/outer London finding has been checked against MPS
+> borough-level recorded crime and survives — outer London is around 40% lower on both
+> datasets, and the borough ordering correlates at Spearman rho = 0.83.
+>
+> **What does not:** individual borough rankings below should not be relied on. Hillingdon is
+> ranked 7th safest here but is 21st in MPS data; Richmond upon Thames is ranked 11th but is
+> actually 1st. The "City of London" row is not City of London — that area is policed by a
+> separate force and its sampling circle overlaps Southwark, Tower Hamlets and Westminster.
+>
+> Rankings are being rebuilt from the
+> [MPS Recorded Crime: Geographic Breakdown](https://data.london.gov.uk/dataset/mps-recorded-crime-geographic-breakdown-exy3m)
+> dataset. Full detail: [`docs/METHODOLOGY_AUDIT.md`](docs/METHODOLOGY_AUDIT.md).
+
 ---
 
 ## 🌐 Live App
@@ -37,9 +59,9 @@ London has 33 boroughs. Each varies widely in crime levels, school quality, hous
 | Boroughs covered | 33 |
 | Date range | January 2024 – December 2025 |
 | Data source | data.police.uk (public API, no key required) |
-| Safest borough | Barnet (100 / 100) |
+| Safest borough | Under revision — see notice above |
 | Best for families | Bromley, Bexley, Havering, Redbridge, Kingston |
-| Highest risk | City of London, Westminster, Kensington and Chelsea |
+| Highest risk | Westminster, Camden, Kensington and Chelsea |
 
 ---
 
@@ -68,7 +90,7 @@ London has 33 boroughs. Each varies widely in crime levels, school quality, hous
 **Statistical insights**
 
 - Borough crime differences are highly significant (one-way ANOVA, p < 0.001) — choosing the right borough genuinely matters
-- Outer London boroughs are 40–60% safer on average than central areas
+- Outer London boroughs are around 40% safer on average than inner London (verified independently against MPS borough-level recorded crime: 1,266 vs 2,086 offences per 10,000 residents per year)
 - Violence and robbery are strongly correlated across boroughs (r > 0.85)
 - Crime follows seasonal patterns: violent crime peaks in summer, burglary peaks in winter
 - K-means clustering identifies 4 distinct borough crime profiles
@@ -227,6 +249,10 @@ london-safety-analysis/
 ## Getting Started
 
 ```bash
+# Install Git LFS first — the raw data files are stored via LFS and will
+# download as 133-byte pointer stubs without it
+git lfs install
+
 # Clone the repository
 git clone https://github.com/ksmhlanga/london-safety-analysis.git
 cd london-safety-analysis
