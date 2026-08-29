@@ -113,9 +113,52 @@ That single row is what pins your min-max scale and flattens the other 32 boroug
 
 ## 5. Smaller items
 
-- **House prices have no cited source.** `house_price_k` drives 30% of the Family Score
-  and appears nowhere in the pipeline. Cite it (ONS/HM Land Registry UK HPI, borough
-  median paid price) or the Family Score isn't reproducible.
+- **House prices have no cited source, and two versions disagree.** *(Corrected 29 Aug 2026:
+  an earlier revision of this document said house prices appeared nowhere in the pipeline.
+  That was wrong — they are hard-coded in notebook 06.)* Notebook 06 defines a
+  `house_prices` dict with no source. The published `borough_safety_summary.csv` carries a
+  `house_price_k` column that matches it for only **6 of 33 boroughs** (Kensington and Chelsea
+  1,650 vs 1,400; Richmond 760 vs 680; Bromley 500 vs 440). Cite a real source
+  (HM Land Registry UK HPI, borough median paid price) and derive the column from it.
+- **The published CSV was not produced by these notebooks.** Its columns are
+  `safety_score, family_score, house_price_k, outer_london, tier, danger_index, rank`.
+  `build_borough_summary()` emits `total_crimes, violent_crimes, property_crimes, drug_crimes,
+  asb_incidents, safety_score, safety_tier`. Different columns, different house prices, and
+  different outer-London flags. Whatever generated the published scores is not in the repo,
+  so the headline table is currently unreproducible from the code beside it.
+- **`outer_london` flags are wrong in both places.** Against the ONS definition, the published
+  CSV marks Greenwich as outer (it is inner) and Haringey as inner (it is outer). Notebook 06's
+  `outer_london` set omits six genuine outer boroughs — Barking and Dagenham, Brent, Merton,
+  Newham, Waltham Forest and Haringey — which costs each of them 20 points of Family Score.
+- **Notebook 04's sensitivity check cannot detect anything.** `rank_change` is computed as
+  `original_rank - reset_index().index - 1`, which is identically zero for any input. The
+  `alt_rank` column is filled with borough names rather than ranks. The notebook then prints
+  "Top and bottom boroughs are robust to weight changes" — a conclusion produced by a bug,
+  not by the data.
+- **K = 4 was chosen by hand.** Notebook 05 computes the silhouette-optimal `best_k`, prints it,
+  then overrides it with `K = 4` and the comment "aligns well with safety tiers." The README's
+  "K-means clustering identifies 4 distinct borough crime profiles" is not a finding. The
+  clustering also runs on raw counts rather than rates, so it partly groups boroughs by size.
+- **Several headline numbers are typed, not computed.** The r > 0.85 violence/robbery
+  correlation, the four cluster descriptions, the crime-type percentages in notebook 02 and the
+  "40-60% safer" line in notebook 06 are all hard-coded `print` strings. Re-running the
+  notebooks will not update them.
+- **The ANOVA does not test what the README claims.** It compares monthly raw crime *counts*
+  across boroughs, so it establishes that boroughs differ in volume — which population size
+  alone guarantees. It says nothing about safety rates, and monthly observations from one
+  borough are not independent, which the test assumes.
+- **Notebooks disagree on their input.** 04 prefers `crime_data_clean.csv`; 05 and 06 read
+  `crime_data_raw.csv` directly. Notebook 03 de-duplicates on `crime_id` alone, so the clean
+  file has a different row count from the raw one. Scores from 04 and 06 are computed on
+  different datasets.
+- **`02_data_preprocessing.ipynb` is dead code.** It mounts Google Drive, points at
+  `/content/drive/MyDrive/Projects/london_safety_analysis`, and reads columns `category` and
+  `collection_month` that the current collector does not produce. It would crash on run and
+  duplicates the `02` prefix. Delete it or move it to an `archive/` folder.
+- **`00_project_overview.ipynb` contradicts the README.** It reports 611,000+ records against
+  the README's 753,904, names Kingston upon Thames as safest at 100/100 where the README says
+  Barnet, says London has 32 boroughs, and still carries the old
+  "PSV Mechanic transitioning into Data Analytics" bio.
 - **`config.py` comment is wrong:** "Metropolitan Police Service covers all 32 London
   boroughs" — it covers 32 of the 33 local authorities, excluding the City of London.
 - **Git LFS trap.** `crime_data_raw.csv` and `crime_data_clean.csv` are LFS pointers.
@@ -190,9 +233,8 @@ Then the four line edits:
 
 ## What I could not check
 
-- Your notebooks. `.ipynb` outputs were not fetched, so the ANOVA p-value, the r > 0.85
-  violence/robbery correlation, and the 4-cluster K-means result are unverified. All three
-  were computed on the biased sample and should be re-run after the source swap.
+- Notebook *outputs* were not available — only source. Stated cell results are therefore
+  unverified, though the code itself has now been reviewed (see section 5).
 - The Streamlit app and Power BI dashboard read `borough_safety_summary.csv`. I have not
   confirmed they won't break when City of London disappears and a `safety_rank` column
   appears. Check before deploying.
